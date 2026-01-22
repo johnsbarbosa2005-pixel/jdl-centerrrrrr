@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JDL Entrepreneurship Center - Room Scheduler</title>
+    <!-- Initialization Error Logger -->
+    <script>
+      window.addEventListener('error', function(e) {
+        console.error("Critical Runtime Error:", e.message, "at", e.filename, ":", e.lineno);
+        // Optional: Show a user-friendly message if the root is still empty after 3 seconds
+        setTimeout(() => {
+          const root = document.getElementById('root');
+          if (root && root.innerHTML === '') {
+            root.innerHTML = '<div style="padding: 20px; text-align: center; font-family: sans-serif;">' +
+              '<h2 style="color: #CC0000;">System Initialization Failed</h2>' +
+              '<p>Please check your internet connection or contact the JDL Center administrator.</p>' +
+              '<button onclick="location.reload()" style="padding: 10px 20px; background: #000; color: #fff; border: none; cursor: pointer;">Reload Application</button>' +
+              '</div>';
+          }
+        }, 3000);
+      });
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              vsuRed: '#CC0000',
+              vsuBlack: '#000000',
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+          --vsu-red: #CC0000;
+          --vsu-black: #000000;
+        }
+        body { 
+          font-family: 'Inter', sans-serif; 
+          background-color: #FFFFFF; 
+          margin: 0;
+          padding: 0;
+        }
+        .occupied-slot { background-color: #E5E7EB; cursor: not-allowed; pointer-events: none; }
+        
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #CC0000; border-radius: 0px; }
+        ::-webkit-scrollbar-thumb:hover { background: #990000; }
+
+        /* Spinner for branding continuity */
+        .vsu-spinner {
+          border: 4px solid rgba(0, 0, 0, 0.1);
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          border-left-color: var(--vsu-red);
+          animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "recharts": "https://esm.sh/recharts@^3.7.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+</head>
+<body class="text-vsuBlack">
+    <div id="root"></div>
+</body>
+</html>
